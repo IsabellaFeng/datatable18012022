@@ -4,14 +4,17 @@
       :headers="headers"
       :items="filteredData"
       item-key="id"
-      class="elevation-1"
+      :footer-props="{
+        'items-per-page-options': [10, 20, 30, 40, 50],
+        showFirstLastPage: true
+      }"
       @click:row="handleClick"
     >
       <template v-slot:top>
         <v-text-field
           v-model="filterAge"
           type="number"
-          label="age below"
+          label="Filter by age below"
           ></v-text-field>
       </template>
     </v-data-table>
@@ -175,7 +178,7 @@ export default class HomePage extends Vue {
   }
 
     private ageChartOptions = {
-    labels: ['0-10', '11-20','21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '<90'],
+    labels: ['0-10', '11-20','21-30', '31-40', '41-50', '51-60', '61-70', '71-80', '81-90', '>90'],
     colors: this.colors,
     chart: {
       type: 'pie'
